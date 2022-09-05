@@ -34,7 +34,6 @@ public class BoardsController {
 		if(principal == null) {
 			return "redirect:/loginForm";
 		}
-		
 		// 3번 BoardsDao에 접근해서 insert 메서드를 호출한다.
 		// 조건 : dto를 entity로 변환해서 인수로 담아준다.
 		// 조건 : entity에는 세션의 principal에 getId가 필요하다.
@@ -43,9 +42,14 @@ public class BoardsController {
 		return "redirect:/";
 	}
 	
+	
+	//http://localhost:8000/ -> 쿼리스트링이 비어있으므로 null  , 디폴트 값을 만들어주어야한다.
+	// http://localhost:8000/?page=0 
 	@GetMapping({"/", "/boards"})
-	public String getBoardList(Model model) {
-		List<MainDto> boardsList = boardsDao.findAll();
+	public String getBoardList(Model model,Integer page) {// pk가 아니면 모두 쿼리 스트링으로 받는다.(page), 0-> 0 , 1-> 10, 2 -> 20
+		if(page == null) page =0;
+		int startNum = page * 10;
+		List<MainDto> boardsList = boardsDao.findAll(startNum);
 		model.addAttribute("boardsList", boardsList);
 		return "boards/main";
 	}
