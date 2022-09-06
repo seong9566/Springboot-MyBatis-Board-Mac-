@@ -12,6 +12,7 @@
 
 	<select id="findById"
 		resultType="site.metacoding.red.domain.boards.Boards">
+		SELECT id,title,content FROM boards WHERE id = #{boards.id};
 
 	</select>
 
