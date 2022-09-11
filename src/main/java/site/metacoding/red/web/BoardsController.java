@@ -30,6 +30,8 @@ public class BoardsController {
 	// @PostMapping("/boards/{id}/update")
 	
 
+	
+	
 	@PostMapping("/boards")
 	public String writeBoards(WriteDto writeDto) {
 		//1. 세션에 회원 세션값 저장되있음 -> 가져와야한다.

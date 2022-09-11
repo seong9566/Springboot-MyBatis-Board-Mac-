@@ -4,6 +4,7 @@ import java.util.List;
 
 import site.metacoding.red.web.dto.request.users.JoinDto;
 import site.metacoding.red.web.dto.request.users.LoginDto;
+import site.metacoding.red.web.dto.request.users.UpdateDto;
 
 public interface UsersDao {
 	public Users login(LoginDto loginDto);
@@ -12,4 +13,5 @@ public interface UsersDao {
 	public List<Users> findAll();
 	public void update(Users users); // DTO 생각해보기
 	public void delete(Integer id);
+
 }
